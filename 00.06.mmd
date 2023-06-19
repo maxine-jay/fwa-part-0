@@ -1,0 +1,15 @@
+/**
+Diagram depicting situation where a user creates a new note on the single-page app https://studies.cs.helsinki.fi/exampleapp/spa by using a form field.
+*/
+
+sequenceDiagram
+    participant browser
+    participant server
+    Note right of browser: Browser run JS callback function which pushes new note to array,
+    Note right of browser: runs redrawNotes() to render the notes (including new note)
+    Note right of browser: runs sendToServer() to send new note to server
+    browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
+    activate server
+    server-->>browser: {content: "another note", date: "2023-06-19T17:32:31.990Z"}
+    deactivate server
+    
